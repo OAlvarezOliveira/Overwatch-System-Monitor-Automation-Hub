@@ -60,4 +60,6 @@ Si PowerShell bloquea el script de activación, ejecuta una vez
 
 - [Arquitectura](docs/architecture.md)
 - [Hoja de ruta](docs/roadmap.md)
+- [Overwatch por asignatura](docs/asignaturas.md)
+- [Registro de decisiones](docs/decisiones.md)
 - [Diario de progreso](docs/progress/README.md)
