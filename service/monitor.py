@@ -1,6 +1,7 @@
 import psutil
 import json
 
+
 def leer_metricas():
     cpu = psutil.cpu_percent(interval=0.5)
     memoria = psutil.virtual_memory().percent
