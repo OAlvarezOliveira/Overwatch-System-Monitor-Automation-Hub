@@ -1,14 +1,13 @@
-# -*- coding: utf-8 -*-
+import psutil
 
-import os ,psutil
-
-
-
-while (True):
+def leer_metricas():
     cpu = psutil.cpu_percent(interval=0.5)
     memoria = psutil.virtual_memory().percent
     disco = psutil.disk_usage("/").percent
 
-    print(f"cpu:{cpu}")
-    print(f"Porcentaje de memoria :{memoria}")
-    print(f"Porcentaje de disco:{disco}")
+    return cpu,memoria,disco
+
+
+if __name__ == "__main__":
+    while(True):
+        print(leer_metricas())    
