@@ -3,7 +3,7 @@
 | Fase | Alcance | Estado |
 | --- | --- | --- |
 | 0 | Repositorio, estructura de carpetas y entorno Python | Hecha |
-| 1 | Python: leer CPU, RAM y disco con `psutil` e imprimirlos cada 500 ms | Siguiente |
+| 1 | Python: leer CPU, RAM y disco con `psutil` e imprimirlos cada 500 ms | Primera versión funcional, pendiente de verificar |
 | 2 | Python: enviar las métricas a los clientes por el transporte elegido | Prevista |
 | 3 | Kotlin: proyecto de escritorio con dashboard en tiempo real | Prevista |
 | 4 | Python: receptor de comandos (terminar un proceso) con hilos seguros | Prevista |
