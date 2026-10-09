@@ -15,6 +15,14 @@ lo importante es el porqué, porque es lo que se pregunta en una defensa.
 - **Consecuencias:** qué cambia a partir de ahora.
 ```
 
+## 2026-10-09: Métrica no disponible, clave presente con `null`
+
+- **Contexto:** algunas métricas pueden no estar disponibles, por ejemplo la temperatura en un equipo sin sensor. Hay que decidir qué recibe el dashboard en ese caso.
+- **Opciones:** omitir la clave del mensaje; incluirla con un valor que indique «sin dato» (`null`); incluirla con un valor numérico como `0`.
+- **Decisión:** la clave siempre aparece y, cuando no hay dato, su valor es `null` (`None` en Python), por ejemplo `{"cpu": 12.5, "memoria": 37.7, "disco": 57.4, "temperatura": null}`. Se descarta `0` porque sería un dato falso.
+- **Porqué:** si no veo la clave no sé si debería disponer de ese dato o no, y puede parecer que todo está correcto y funcionando. Si me falta un dato puede deberse a que no hay hardware para recuperarlo, a un error del mismo o incluso a un problema en el servicio que procesa y envía el dato.
+- **Consecuencias:** el dashboard puede distinguir «métrica esperada pero sin dato» de «métrica que no existe» y mostrarlo. El mensaje tiene siempre las mismas claves. Con `null` no se distingue la causa del fallo (sin hardware, error del sensor o fallo del servicio); si hiciera falta, una decisión futura podría añadir un campo de estado o motivo.
+
 ## 2026-10-09: Intervalo de muestreo, 0,5 s
 
 - **Contexto:** el servicio lee las métricas en bucle y las envía al dashboard. Hay que fijar cada cuánto se mide y se emite una lectura.
@@ -41,4 +49,4 @@ lo importante es el porqué, porque es lo que se pregunta en una defensa.
 
 ## Decisiones pendientes
 
-- Cómo se representa una métrica no disponible (por ejemplo, la temperatura).
+Ninguna por ahora. Las decisiones de la fase 2 (transporte, formato, intervalo y métrica no disponible) están registradas arriba.
