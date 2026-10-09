@@ -15,6 +15,14 @@ lo importante es el porqué, porque es lo que se pregunta en una defensa.
 - **Consecuencias:** qué cambia a partir de ahora.
 ```
 
+## 2026-10-09: Intervalo de muestreo, 0,5 s
+
+- **Contexto:** el servicio lee las métricas en bucle y las envía al dashboard. Hay que fijar cada cuánto se mide y se emite una lectura.
+- **Opciones:** intervalos más largos (por ejemplo 5 s) o más cortos (por ejemplo 100 ms) que 0,5 s.
+- **Decisión:** 0,5 s. En el código es `psutil.cpu_percent(interval=0.5)`, que mide la CPU durante ese tiempo y marca el ritmo del bucle.
+- **Porqué:** porque medio segundo da sensación de tiempo real sin saturar el equipo.
+- **Consecuencias:** se emiten unas 2 lecturas por segundo. El valor está escrito en el código; si más adelante se quiere ajustar, conviene sacarlo a una constante o a un parámetro.
+
 ## 2026-10-09: Formato del mensaje de métricas, JSON con claves con nombre
 
 - **Contexto:** `leer_metricas()` devolvía una tupla `(cpu, memoria, disco)`. Enviada así por el WebSocket, el dashboard tendría que adivinar qué es cada número por su posición.
@@ -33,5 +41,4 @@ lo importante es el porqué, porque es lo que se pregunta en una defensa.
 
 ## Decisiones pendientes
 
-- Intervalo de muestreo de métricas.
 - Cómo se representa una métrica no disponible (por ejemplo, la temperatura).
