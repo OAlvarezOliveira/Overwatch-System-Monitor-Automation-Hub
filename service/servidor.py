@@ -8,9 +8,9 @@ from monitor import leer_metricas
 async def iniciarLecturaMetricas(websocket):
     try:
         while True:
+            lectura = await asyncio.to_thread(leer_metricas)
             # Enviamos las métricas en formato JSON
-            await websocket.send(json.dumps(leer_metricas()))
-            await asyncio.sleep(0.5)
+            await websocket.send(json.dumps(lectura))
     except websockets.exceptions.ConnectionClosed:
         print("\nCliente desconectado de forma segura.")
 
