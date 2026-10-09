@@ -21,7 +21,7 @@ lo importante es el porqué, porque es lo que se pregunta en una defensa.
 - **Opciones:** estructura plana con dependencia en un solo sentido; dependencia en ambos sentidos; reestructurar ya en un paquete.
 - **Decisión:** `servidor.py` importa `monitor.py`, y `monitor.py` no importa nunca `servidor.py`. Por ahora se mantiene la estructura plana (`service/` con `tests/`). También se adopta `snake_case` para los nombres de funciones, que es la convención de Python (PEP 8).
 - **Porqué:** así queda claro cuál depende de cuál.
-- **Consecuencias:** `monitor.py` se puede probar sin arrancar ningún servidor (`tests/test_monitor.py` ya lo hace) y se evita un error de importación circular. Cuando lleguen las fases 4 y 5 y haya más módulos, se agruparán en un paquete. Pendiente: la función `iniciarLecturaMetricas` de `servidor.py` sigue en camelCase y hay que renombrarla a `iniciar_lectura_metricas`.
+- **Consecuencias:** `monitor.py` se puede probar sin arrancar ningún servidor (`tests/test_monitor.py` ya lo hace) y se evita un error de importación circular. Cuando lleguen las fases 4 y 5 y haya más módulos, se agruparán en un paquete. La función de `servidor.py` ya se llama `iniciar_lectura_metricas`.
 
 ## 2026-10-09: Métrica no disponible, clave presente con `null`
 

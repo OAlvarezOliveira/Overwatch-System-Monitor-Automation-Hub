@@ -5,7 +5,7 @@ from websockets.asyncio.server import serve
 from monitor import leer_metricas
 
 
-async def iniciarLecturaMetricas(websocket):
+async def iniciar_lectura_metricas(websocket):
     try:
         while True:
             lectura = await asyncio.to_thread(leer_metricas)
@@ -15,7 +15,7 @@ async def iniciarLecturaMetricas(websocket):
         print("\nCliente desconectado de forma segura.")
 
 async def main():
-    async with serve(iniciarLecturaMetricas, "localhost", 8765):
+    async with serve(iniciar_lectura_metricas, "localhost", 8765):
         await asyncio.Future()   # mantiene el servidor abierto
 
 if __name__ == "__main__":
